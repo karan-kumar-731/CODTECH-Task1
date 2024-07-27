@@ -1,12 +1,12 @@
-Name: KARAN KUMAR
+Name: KARAN KUMAR,
 
-Company: CODTECH IT SOLUTIONS
+Company: CODTECH IT SOLUTIONS,
 
-ID:CT08DS5389
+ID:CT08DS5389,
 
-Domain: WEB DEVELOPMENT
+Domain: WEB DEVELOPMENT,
 
-Duration: 4 weeks from JULY 20
+Duration: 4 weeks from JULY 20,
 
 Mentor: Neela Santhosh Kumar
 
