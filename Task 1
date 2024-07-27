@@ -1,0 +1,68 @@
+/** THE BELOW CODE IS FOR TODO LIST IN REACT**/
+
+import { useState } from "react"
+import { v4 as uuidv4 } from 'uuid';
+
+export  default function Todolist(){
+    let [todos,setTodos]=useState([{task:"sample task ",id:uuidv4(),isComplete:false}])
+    let [newTodo,setNewTodo]=useState("")
+    
+   let newTodoValue=(event)=>{
+        setNewTodo(event.target.value)
+    }
+    let updatedTodo=()=>{
+        setTodos([...todos ,{task:newTodo,id:uuidv4(),isComplete:false}])
+        setNewTodo("");
+    }
+    let deleteTodo=(id)=>{
+        setTodos((pretodos)=>pretodos.filter((todo)=>todo.id!=id))
+    }
+    let taskCompleted=()=>{
+        setTodos((preTodos)=>preTodos.map((todo)=>{
+            return{
+                ...todo,isComplete:true
+            }
+        }))
+    }
+
+    let taskOneCompleted=(id)=>{
+        setTodos(todos.map((todo)=>{
+            
+                if(todo.id==id){
+                    return {
+                        ...todo,
+                        isComplete:true
+                    };
+                }else{
+                   return todo;
+
+                }
+        }))
+
+    }
+    return(
+        <>
+         <h1>Todo lists</h1>
+         <input  className="inpt"placeholder="enter task" value={newTodo}  onChange={newTodoValue} ></input>
+         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <button  id="Addtask"onClick={updatedTodo} >Add task</button>
+           
+            <ul>
+                {todos.map((items)=>(
+                    <li  className="Lists"  key={items.id}>
+                       <span style={items.isComplete?{textDecorationLine:"line-through "  }:{}}>{items.task}</span> 
+                       &nbsp; &nbsp; &nbsp;
+                       
+                      
+                       <button className="dlt"onClick={()=>deleteTodo(items.id)}>delete</button>
+                 &nbsp; &nbsp; &nbsp;
+                 <button  onClick={()=>taskOneCompleted(items.id)}>taskOneCompleted</button>
+                 
+                        </li>
+                ))}
+                 </ul>
+                 <button  className="All" onClick={taskCompleted}>All task Completed</button>
+                   </>
+    )
+
+    }
